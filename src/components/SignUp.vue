@@ -30,11 +30,13 @@ export default {
       });
       console.warn(res);
       if (res.status === 201) {
-        alert("signup was done");
+        // alert("signup was done");
         // save user data in local storage
         // input data was saves at res.data
         // res.data was saved at ChromeDevtools/Application/Storage/Local Storage/http://localhost:8080
         localStorage.setItem("user-info", JSON.stringify(res.data));
+        // redirect to 'Home' route
+        this.$router.push({ name: "Home" });
       }
     },
   },

@@ -29,6 +29,18 @@
       "email": "hellen@test.com",
       "password": "hellen@123",
       "id": 5
+    },
+    {
+      "name": "Bonnet",
+      "email": "bonnet@test.com",
+      "password": "bonnet@123",
+      "id": 6
+    },
+    {
+      "name": "Susan",
+      "email": "susan@test.com",
+      "password": "susan@123",
+      "id": 7
     }
   ]
 }
