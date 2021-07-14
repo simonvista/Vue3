@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "SignUp",
   data() {
@@ -20,8 +21,21 @@ export default {
     };
   },
   methods: {
-    signUp() {
-      console.warn("signup", this.name, this.email, this.password);
+    async signUp() {
+      //   console.warn("signup", this.name, this.email, this.password);
+      let res = await axios.post("http://localhost:3000/users", {
+        name: this.name,
+        email: this.email,
+        password: this.password,
+      });
+      console.warn(res);
+      if (res.status === 201) {
+        alert("signup was done");
+        // save user data in local storage
+        // input data was saves at res.data
+        // res.data was saved at ChromeDevtools/Application/Storage/Local Storage/http://localhost:8080
+        localStorage.setItem("user-info", JSON.stringify(res.data));
+      }
     },
   },
 };
