@@ -41,6 +41,18 @@
       "email": "susan@test.com",
       "password": "susan@123",
       "id": 7
+    },
+    {
+      "name": "Jane",
+      "email": "jane@test.com",
+      "password": "jane@123",
+      "id": 8
+    },
+    {
+      "name": "Dupont",
+      "email": "dupont@test.com",
+      "password": "dupont@123",
+      "id": 9
     }
   ]
 }
