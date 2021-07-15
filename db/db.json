@@ -54,5 +54,25 @@
       "password": "dupont@123",
       "id": 9
     }
+  ],
+  "restaurants": [
+    {
+      "id": 1,
+      "name": "KFC",
+      "contact": 11111,
+      "address": "NY"
+    },
+    {
+      "id": 2,
+      "name": "MCD",
+      "contact": 22222,
+      "address": "NJ"
+    },
+    {
+      "id": 3,
+      "name": "DPZ",
+      "contact": 33333,
+      "address": "CT"
+    }
   ]
 }
