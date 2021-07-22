@@ -25,6 +25,8 @@
 </template>
 <script>
 import Header from "./Header.vue";
+import axios from "axios";
+
 export default {
   components: { Header },
   name: "Add",
@@ -38,10 +40,19 @@ export default {
     };
   },
   methods: {
-    addRestaurant(e) {
+    async addRestaurant(e) {
       // current page will refresh after form is submitted by default
       e.preventDefault();
       console.warn(this.restaurant);
+      const res = await axios.post("http://localhost:3000/restaurants", {
+        name: this.restaurant.name,
+        address: this.restaurant.address,
+        contact: this.restaurant.contact,
+      });
+      console.warn("res", res);
+      if (res.status === 201) {
+        this.$router.push({ name: "Home" });
+      }
     },
   },
   mounted() {
