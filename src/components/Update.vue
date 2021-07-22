@@ -20,7 +20,7 @@
       name="contact"
       placeholder="contact"
     />
-    <button type="submit" v-on:click="addRestaurant">
+    <button type="submit" v-on:click="updateRestaurant">
       update restaurant
     </button>
   </form>
@@ -42,7 +42,23 @@ export default {
     };
   },
   methods: {
-    updateRestaurant() {},
+    async updateRestaurant(e) {
+      /* e.preventDefault();
+      console.warn("res", this.restaurant); */
+      // current page will refresh after form is submitted by default
+      e.preventDefault();
+      console.warn(this.restaurant);
+      const id = this.$route.params.id;
+      const res = await axios.put(`http://localhost:3000/restaurants/${id}`, {
+        name: this.restaurant.name,
+        address: this.restaurant.address,
+        contact: this.restaurant.contact,
+      });
+      console.warn("res", res);
+      if (res.status === 200) {
+        this.$router.push({ name: "Home" });
+      }
+    },
   },
   async mounted() {
     let user = localStorage.getItem("user-info");
