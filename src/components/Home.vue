@@ -19,6 +19,7 @@
       <td>
         <!-- <router-link v-bind:to="'/update/' + item.id">update</router-link> -->
         <router-link :to="'/update/' + item.id">update</router-link>
+        <button v-on:click="deleteResto(item.id)">delete</button>
       </td>
     </tr>
   </table>
@@ -35,18 +36,30 @@ export default {
       restaurants: [],
     };
   },
-
+  methods: {
+    async deleteResto(id) {
+      console.warn("delete resto", id);
+      const res = await axios.delete(`http://localhost:3000/restaurants/${id}`);
+      console.warn(res);
+      if (res.status === 200) {
+        this.loadData();
+      }
+    },
+    async loadData() {
+      let user = localStorage.getItem("user-info");
+      // console.warn(user);  //{name: "test", email: "test@test.com", password: "test@123", id: 4}
+      // console.warn(typeof user);  //string
+      this.name = JSON.parse(user).name;
+      if (!user) {
+        this.$router.push({ name: "SignUp" });
+      }
+      let res = await axios.get("http://localhost:3000/restaurants");
+      console.warn(res);
+      this.restaurants = res.data;
+    },
+  },
   async mounted() {
-    let user = localStorage.getItem("user-info");
-    // console.warn(user);  //{name: "test", email: "test@test.com", password: "test@123", id: 4}
-    // console.warn(typeof user);  //string
-    this.name = JSON.parse(user).name;
-    if (!user) {
-      this.$router.push({ name: "SignUp" });
-    }
-    let res = await axios.get("http://localhost:3000/restaurants");
-    console.warn(res);
-    this.restaurants = res.data;
+    this.loadData();
   },
 };
 </script>
