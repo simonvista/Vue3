@@ -27,6 +27,8 @@
 </template>
 <script>
 import Header from "./Header.vue";
+import axios from "axios";
+
 export default {
   components: { Header },
   name: "Update",
@@ -42,11 +44,17 @@ export default {
   methods: {
     updateRestaurant() {},
   },
-  mounted() {
+  async mounted() {
     let user = localStorage.getItem("user-info");
     if (!user) {
       this.$router.push({ name: "SignUp" });
     }
+    // retrieve id from path: "/update/:id"
+    const id = this.$route.params.id;
+    console.warn(id);
+    const res = await axios.get(`http://localhost:3000/restaurants/${id}`);
+    console.warn(res.data);
+    this.restaurant = res.data;
   },
 };
 </script>
