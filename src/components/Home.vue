@@ -1,28 +1,16 @@
 <template>
-  <h1>For Loop</h1>
-  <ul>
-    <li v-for="item in tech" :key="item.id">{{ item }}</li>
-  </ul>
-  <hr />
-  <ul>
-    <li v-for="user in users" :key="user.id">
-      name: {{ user.name }}, email: {{ user.email }}
-    </li>
-  </ul>
+  <h1>Pass dat from parent to child component</h1>
+  <Child name="bruce" />
 </template>
 
 <script>
+import Child from "./Child.vue";
+
 export default {
+  components: { Child },
   name: "Home",
   data() {
-    return {
-      tech: ["java", "php", "c#", "js"],
-      users: [
-        { name: "anil", email: "anil@test.com" },
-        { name: "sam", email: "sam@test.com" },
-        { name: "bob", email: "bob@test.com" },
-      ],
-    };
+    return {};
   },
   methods: {},
 };
