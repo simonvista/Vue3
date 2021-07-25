@@ -2,7 +2,7 @@
   <h1>Reuse Component</h1>
 
   <ul v-for="user in users" :key="user.id">
-    <User :user="user" />
+    <User :user="user" :getData="getData" />
   </ul>
 </template>
 
@@ -30,7 +30,11 @@ export default {
       ],
     };
   },
-  methods: {},
+  methods: {
+    getData(user) {
+      console.warn(`Hi ${user.name}, ${user.email}`);
+    },
+  },
 };
 </script>
 

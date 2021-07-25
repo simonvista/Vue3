@@ -2,7 +2,7 @@
   <div>
     <li>{{ user.name }}</li>
     <li>{{ user.email }}</li>
-    <button v-on:click="getData">alert user name</button>
+    <button v-on:click="getData(user)">alert user name</button>
   </div>
 </template>
 
@@ -12,12 +12,8 @@ export default {
   props: {
     //   data type must be claimed below
     user: Object,
+    getData: Function,
   },
-  methods: {
-    getData() {
-      // console.warn(this.user);
-      console.warn(`Hi ${this.user.name}, ${this.user.email}`);
-    },
-  },
+  methods: {},
 };
 </script>
