@@ -1,40 +1,24 @@
 <template>
-  <h1>Reuse Component</h1>
-
-  <ul v-for="user in users" :key="user.id">
-    <User :user="user" :getData="getData" />
-  </ul>
+  <h1>Html Binding (v-html)</h1>
+  <div v-html="tag1"></div>
+  <div v-html="tag2"></div>
+  <hr />
+  <div v-html="tag1 + tag2 + tag3"></div>
 </template>
 
 <script>
-import User from "./User.vue";
-
 export default {
-  components: { User },
+  components: {},
   name: "Home",
   data() {
     return {
-      users: [
-        {
-          name: "anil",
-          email: "anil@test.com",
-        },
-        {
-          name: "bob",
-          email: "bob@test.com",
-        },
-        {
-          name: "jack",
-          email: "jack@test.com",
-        },
-      ],
+      text: "anil sidhu",
+      tag1: "<h2>Anil Sidhu</h2>",
+      tag2: "<h2>Peter</h2>",
+      tag3: "<h2>Bruce</h2>",
     };
   },
-  methods: {
-    getData(user) {
-      console.warn(`Hi ${user.name}, ${user.email}`);
-    },
-  },
+  methods: {},
 };
 </script>
 
