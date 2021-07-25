@@ -1,6 +1,7 @@
 <template>
   <h1>Pass dat from parent to child component</h1>
-  <Child name="bruce" />
+  <!-- pass String, Object, and Function to child from parent -->
+  <Child :name="name" :data="user" :getData="getData" />
 </template>
 
 <script>
@@ -10,9 +11,19 @@ export default {
   components: { Child },
   name: "Home",
   data() {
-    return {};
+    return {
+      name: "bruce",
+      user: {
+        name: "bob",
+        email: "bob@test.com",
+      },
+    };
   },
-  methods: {},
+  methods: {
+    getData() {
+      alert("getData() was triggered");
+    },
+  },
 };
 </script>
 

@@ -2,7 +2,8 @@
   <div>
     <h1>Child component</h1>
     <p>{{ name }}</p>
-    <p></p>
+    <p>{{ data.name }}, {{ data.email }}</p>
+    <button v-on:click="getData">getData</button>
   </div>
 </template>
 
@@ -10,7 +11,10 @@
 export default {
   name: "Child",
   props: {
-    name,
+    //   data type must be claimed below
+    name: String,
+    data: Object,
+    getData: Function,
   },
 };
 </script>
