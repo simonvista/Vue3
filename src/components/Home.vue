@@ -1,29 +1,36 @@
 <template>
-  <h1>Pass dat from parent to child component</h1>
-  <!-- pass String, Object, and Function to child from parent -->
-  <Child :name="name" :data="user" :getData="getData" />
+  <h1>Reuse Component</h1>
+
+  <ul v-for="user in users" :key="user.id">
+    <User :user="user" />
+  </ul>
 </template>
 
 <script>
-import Child from "./Child.vue";
+import User from "./User.vue";
 
 export default {
-  components: { Child },
+  components: { User },
   name: "Home",
   data() {
     return {
-      name: "bruce",
-      user: {
-        name: "bob",
-        email: "bob@test.com",
-      },
+      users: [
+        {
+          name: "anil",
+          email: "anil@test.com",
+        },
+        {
+          name: "bob",
+          email: "bob@test.com",
+        },
+        {
+          name: "jack",
+          email: "jack@test.com",
+        },
+      ],
     };
   },
-  methods: {
-    getData() {
-      alert("getData() was triggered");
-    },
-  },
+  methods: {},
 };
 </script>
 
