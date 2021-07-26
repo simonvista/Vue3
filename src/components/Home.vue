@@ -1,23 +1,32 @@
 <template>
-  <h1>Teleport components</h1>
-
-  <teleport to="#footer">
-    <Footer />
-  </teleport>
+  <h1>beforeCreated & created LCMs</h1>
 </template>
 
 <script>
-import Footer from "./Footer.vue";
 export default {
-  components: {
-    Footer,
-  },
+  components: {},
   name: "Home",
+  // 2nd call
   data() {
-    return {};
+    console.warn("data was created");
+    return {
+      name: "Anil Sidhu",
+    };
   },
   computed: {},
   methods: {},
+  // 1st call
+  beforeCreate() {
+    console.warn("beforeCreate LCM was called");
+    console.warn(this.name); // undefined
+    this.name = "Peter Johnson";
+    console.warn(this.name); // Peter Johnson
+  },
+  // 3rd call
+  created() {
+    console.warn("created LCM was called");
+    console.warn(this.name); // Anil Sidhu
+  },
 };
 </script>
 
