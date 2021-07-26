@@ -1,16 +1,24 @@
 <template>
-  <h1>profile component</h1>
+  <h1>{{ name }} profile component</h1>
 </template>
 
 <script>
+import { useRoute } from "vue-router";
 export default {
   components: {},
   name: "Profile",
   data() {
-    return {};
+    return {
+      name: "",
+    };
   },
   computed: {},
   methods: {},
+  mounted() {
+    const route = useRoute();
+    console.warn("route", route.params);
+    this.name = route.params.name;
+  },
 };
 </script>
 

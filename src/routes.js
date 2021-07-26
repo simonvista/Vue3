@@ -5,8 +5,8 @@ import Login from "./components/Login.vue";
 
 const routes = [
   { path: "/", component: Home, name: "Home" },
-  { path: "/profile", component: Profile, name: "Profile" },
   { path: "/login", component: Login, name: "Login" },
+  { path: "/profile/:name", component: Profile, name: "Profile" },
 ];
 const router = createRouter({
   history: createWebHistory(),
