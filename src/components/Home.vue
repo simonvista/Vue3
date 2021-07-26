@@ -1,31 +1,24 @@
 <template>
-  <h1>beforeCreated & created LCMs</h1>
+  <h1 id="header">beforeMounted & Mounted LCMs</h1>
 </template>
 
 <script>
 export default {
   components: {},
   name: "Home",
-  // 2nd call
   data() {
-    console.warn("data was created");
-    return {
-      name: "Anil Sidhu",
-    };
+    return {};
   },
   computed: {},
   methods: {},
-  // 1st call
-  beforeCreate() {
-    console.warn("beforeCreate LCM was called");
-    console.warn(this.name); // undefined
-    this.name = "Peter Johnson";
-    console.warn(this.name); // Peter Johnson
+  beforeMount() {
+    console.warn("beforeMount", this.$el); // null
+    console.warn(document.getElementById("header")); // null
   },
-  // 3rd call
-  created() {
-    console.warn("created LCM was called");
-    console.warn(this.name); // Anil Sidhu
+  // earliest time to access template
+  mounted() {
+    console.warn("mounted", this.$el); // <h1...>beforeMounted & Mounted LCMs</h1>
+    console.warn(document.getElementById("header")); // <h1...>beforeMounted & Mounted LCMs</h1>
   },
 };
 </script>
