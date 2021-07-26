@@ -1,6 +1,11 @@
 <template>
   <h1>simple form</h1>
-  {{ form }}
+  <!-- {{ form }} -->
+  <ul>
+    <li v-for="err in errs" :key="err.id" style="color:red">
+      {{ err }} is not valid
+    </li>
+  </ul>
   <form @submit="login">
     <!-- input field -->
     <label>email</label>
@@ -61,6 +66,7 @@ export default {
         gender: "",
         tech: [],
       },
+      errs: [],
     };
   },
   computed: {},
@@ -68,7 +74,17 @@ export default {
     login(e) {
       e.preventDefault();
       console.warn(this.form);
-      // console.warn(`login info: ${this.form.email}, ${this.form.password}`);
+      this.errs = [];
+      for (const item in this.form) {
+        if (this.form.item === "" || this.form[item].length === 0) {
+          this.errs.push(item);
+        }
+      }
+      if (this.errs.length === 0) {
+        alert("data was submitted as expected");
+      } else {
+        console.warn(this.errs);
+      }
     },
   },
 };
