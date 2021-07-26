@@ -1,6 +1,6 @@
 <template>
   <h1>Non-Props Data</h1>
-  <user item="my data" name="my name" />
+  <user />
 </template>
 
 <script>
