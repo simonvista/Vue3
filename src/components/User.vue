@@ -1,5 +1,5 @@
 <template>
-  <!-- values of item & name still pass through div tag even no settings in Props -->
+  <!-- values of item & name won't pass through div tag even no settings in Props b/c inheritAttrs:false -->
   <div>
     <!-- Non-Props data -->
     <h1 >user component</h1>
@@ -21,5 +21,7 @@ export default {
     /* name: String,
     item: String, */
   },
+  // values of item & name won't pass through div tag
+  inheritAttrs:false
 };
 </script>
