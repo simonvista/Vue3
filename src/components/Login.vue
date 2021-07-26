@@ -1,11 +1,11 @@
 <template>
-  <h1>home component</h1>
+  <h1>login component</h1>
 </template>
 
 <script>
 export default {
   components: {},
-  name: "Home",
+  name: "Login",
   data() {
     return {};
   },
