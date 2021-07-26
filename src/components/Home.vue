@@ -1,34 +1,28 @@
 <template>
-  <h1>Pass data through props</h1>
-  <student name="anil" :user="user" />
-  <teacher :name="name" :sayHi="sayHi" />
+  <h1>Pass data from child to parent component</h1>
+  <h2>name: {{ name }}</h2>
+  <User :getNameFromChild="getNameFromChild" />
 </template>
 
 <script>
-import Student from "./Student.vue";
-import Teacher from "./Teacher.vue";
-
+import User from "./User.vue";
 export default {
   components: {
-    Student,
-    Teacher,
+    User,
   },
   name: "Home",
   data() {
     return {
-      name: "peter",
-      user: { name: "jane", email: "jane@test.com" },
-      sayHi() {
-        alert("Hi");
-      },
+      name: "",
     };
   },
-  computed: {
-    adjustedStyle() {
-      return {};
+  computed: {},
+  methods: {
+    getNameFromChild(name) {
+      // alert(name);
+      this.name = name;
     },
   },
-  methods: {},
 };
 </script>
 
