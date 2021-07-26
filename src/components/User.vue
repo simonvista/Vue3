@@ -1,12 +1,9 @@
 <template>
   <div>
-    <h1>Computed Property rather than template expression in data</h1>
-    <!-- not cached -->
-    <h2>{{ dollars * rupeeVal - discount }}</h2>
-    <!-- computed property is cached -->
-    <h2>{{ getRes }}</h2>
-    <!-- method isn't cached -->
-    <h2>{{ getData() }}</h2>
+    <h1>Watchers (Data Observer)</h1>
+    <h2>{{ count }}</h2>
+    <button v-on:click="count = count + 1">+</button>
+    <button v-on:click="count = count - 1">-</button>
   </div>
 </template>
 
@@ -15,22 +12,22 @@ export default {
   name: "User",
   data() {
     return {
-      dollars: 100,
-      rupeeVal: 70,
-      discount: 10,
+      count: 0,
     };
   },
+  watch: {
+    // count must be the same as data
+    count(curVal, preVal) {
+      console.warn(curVal, preVal);
+      if (curVal > 5 && curVal > preVal) {
+        this.count = 0;
+        alert("stop increasing count");
+      }
+    },
+  },
   props: {},
-  methods: {
-    getData() {
-      return this.dollars * this.rupeeVal - this.discount;
-    },
-  },
+  methods: {},
   // computed property is cached
-  computed: {
-    getRes() {
-      return this.dollars * this.rupeeVal - this.discount;
-    },
-  },
+  computed: {},
 };
 </script>
