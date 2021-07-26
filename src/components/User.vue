@@ -1,6 +1,8 @@
 <template>
   <!-- Non-Props data -->
   <h1 >user component</h1>
+  <!-- values of item & name still pass through h3 tag even no settings in Props -->
+  <!-- <h3 v-bind='$attrs'>Bruce</h3> -->
   <h3 :='$attrs'>Bruce</h3>
   <h3>Peter</h3>
   <h3>Tom</h3>
