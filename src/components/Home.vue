@@ -1,5 +1,7 @@
 <template>
-  <h1 id="header">beforeMounted & Mounted LCMs</h1>
+  <h1>beforeUpdated & Updated LCMs</h1>
+  <h3 ref="count">{{ counter }}</h3>
+  <button @click="counter = counter + 1">+</button>
 </template>
 
 <script>
@@ -7,18 +9,19 @@ export default {
   components: {},
   name: "Home",
   data() {
-    return {};
+    return {
+      counter: 0,
+    };
   },
   computed: {},
   methods: {},
-  beforeMount() {
-    console.warn("beforeMount", this.$el); // null
-    console.warn(document.getElementById("header")); // null
+  beforeUpdate() {
+    console.warn("beforeUpdate", this.counter); // 1
+    console.warn("beforeUpdate", this.$refs["count"].textContent); // 0
   },
-  // earliest time to access template
-  mounted() {
-    console.warn("mounted", this.$el); // <h1...>beforeMounted & Mounted LCMs</h1>
-    console.warn(document.getElementById("header")); // <h1...>beforeMounted & Mounted LCMs</h1>
+  updated() {
+    console.warn("updated", this.counter); //1
+    console.warn("updated", this.$refs["count"].textContent); //1
   },
 };
 </script>
