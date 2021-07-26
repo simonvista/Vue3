@@ -7,7 +7,7 @@
     <h3>Peter</h3>
     <h3>Tom</h3>
     <!-- Props data -->
-    <!-- <h3>{{ name }}, {{ item }}</h3>  -->
+    <!-- <h3>{{ name }}, {{ item }}</h3> -->
   </div>
 </template>
 
