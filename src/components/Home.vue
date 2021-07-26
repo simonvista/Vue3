@@ -1,27 +1,20 @@
 <template>
-  <h1>Dyanamic components</h1>
-  <button @click="tab = 'Java'">loadJava</button>
-  <button @click="tab = 'Node'">loadNode</button>
-  <button @click="tab = 'Php'">loadPhp</button>
-  <component :is="tab" />
+  <h1>Teleport components</h1>
+
+  <teleport to="#footer">
+    <Footer />
+  </teleport>
 </template>
 
 <script>
-import Java from "./Java.vue";
-import Node from "./Node.vue";
-import Php from "./Php.vue";
-
+import Footer from "./Footer.vue";
 export default {
   components: {
-    Java,
-    Node,
-    Php,
+    Footer,
   },
   name: "Home",
   data() {
-    return {
-      tab: "Java",
-    };
+    return {};
   },
   computed: {},
   methods: {},
