@@ -1,12 +1,13 @@
 <template>
   <div>
-    <h1>App component</h1>
-    <ul class="item" v-for="item in list" :key="item.id">
-      <li>{{ item.id }}</li>
-      <li>{{ item.email }}</li>
-      <li>{{ item.first_name }}</li>
-      <li><img :src="item.avatar" alt="" /></li>
-    </ul>
+    <h1>Post API</h1>
+    <input type="email" placeholder="email" v-model="email" /><br /><br />
+    <input
+      type="password"
+      placeholder="password"
+      v-model="password"
+    /><br /><br />
+    <button @click="onSubmit">submit</button>
     <router-view />
   </div>
 </template>
@@ -19,13 +20,19 @@ export default {
   components: {},
   data() {
     return {
-      list: [],
+      email: "",
+      password: "",
     };
   },
-  async mounted() {
-    const res = await axios.get("https://reqres.in/api/users?page=1");
-    console.warn(res.data.data);
-    this.list = res.data.data;
+  methods: {
+    async onSubmit() {
+      // console.warn(`${this.email}, ${this.password}`);
+      const res = await axios.post("http://localhost:3000/user", {
+        email: this.email,
+        password: this.password,
+      });
+      console.warn(res);
+    },
   },
 };
 </script>
