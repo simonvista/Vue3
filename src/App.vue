@@ -1,9 +1,12 @@
 <template>
   <div>
     <h1>App component</h1>
-    <p v-for="item in list" :key="item.id">
-      {{ item.email }}, {{ item.first_name }}
-    </p>
+    <ul class="item" v-for="item in list" :key="item.id">
+      <li>{{ item.id }}</li>
+      <li>{{ item.email }}</li>
+      <li>{{ item.first_name }}</li>
+      <li><img :src="item.avatar" alt="" /></li>
+    </ul>
     <router-view />
   </div>
 </template>
